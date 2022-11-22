@@ -1,0 +1,30 @@
+.container-header {
+    border: solid 1px black;
+    width: 100vw;
+    height: 12rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-logo {
+    border: solid 1px black;
+    width: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-menu {
+    display: flex;
+    border: solid 1px black;
+    width: 30rem;
+}
+
+.menu {
+    border: solid 1px black;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+}

@@ -1,0 +1,126 @@
+/* .container-lado-direito {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: relative;
+} */
+
+.container-resumo {
+    height: 30rem;
+    border: solid 1px red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.container-resumo div:nth-child(3) {
+    margin-bottom: 3rem;
+}
+
+.container-resumo h3 {
+    margin-bottom: 3rem;
+}
+
+.resumo-entradas {
+    display: flex;
+    gap: 8rem;
+    border: solid 1px red;
+    width: 100%;
+    height: 4rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+.container-btn-add-registro button {
+    all: unset;
+    border: solid 1px red;
+    width: 100%;
+    height: 4rem;
+    text-align: center;
+}
+
+.container-btn-add-registro button:hover {
+    background-color: red;
+    color: white;
+}
+
+/* .modal-add-registro {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+
+}
+
+.container-add-registro {
+    width: 32rem;
+    height: 32rem;
+    border: solid 1px green;
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    position: absolute;
+    top: 17rem;
+    right: 9rem;
+    gap: 2rem;
+}
+
+.form-add-registro {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-add-registro input {
+    all: unset;
+    border: solid 1px black;
+    height: 3rem;
+    width: 20rem;
+}
+
+.opcao-entrada-saida {
+    width: 20rem;
+    height: 3rem;
+    border: solid 1px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.opcao-entrada-saida button {
+    all: unset;
+    width: 50%;
+    text-align: center;
+    border: solid 1px black;
+    height: 100%;
+}
+
+.btn-entrada:hover {
+    background-color: blue;
+    color: white;
+}
+
+.btn-saida:hover {
+    background-color: red;
+    color: white;
+}
+
+.btn-fechar-modal {
+    all: unset;
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    top: 2rem;
+    right: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.btn-fechar-modal:hover {
+    border: solid 1px black;
+    border-radius: 100%;
+} */
