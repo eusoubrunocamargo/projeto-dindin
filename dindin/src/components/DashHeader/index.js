@@ -1,6 +1,6 @@
 import '../DashHeader/styles.css'
 
-export default function DashHeader() {
+export default function DashHeader(props) {
 
     return (
         <>
@@ -10,7 +10,7 @@ export default function DashHeader() {
                 </div>
                 <div className='container-menu'>
                     <ul className='menu'>
-                        <li>Usuário</li>
+                        <button onClick={() => { props.setOpenEditUser(true) }}>Usuário</button>
                         <li>Sair</li>
                     </ul>
                 </div>

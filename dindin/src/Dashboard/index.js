@@ -5,6 +5,7 @@ import ModalRegistro from '../components/ModalRegistro';
 import DashHeader from '../components/DashHeader';
 import Extrato from '../components/Extrato';
 import Resumo from '../components/Resumo';
+import EditUser from '../components/EditUser';
 
 function Dashboard() {
 
@@ -17,18 +18,21 @@ function Dashboard() {
   };
 
   const [addRegistro, setAddRegistro] = useState(false);
+  const [openEditUser, setOpenEditUser] = useState(false);
 
-  function handleAdicionarRegistro() {
-    console.log("entrou...");
-    addRegistro ?
-      setAddRegistro(false) :
-      setAddRegistro(true);
-  };
+  // function handleAdicionarRegistro() {
+  //   console.log("entrou...");
+  //   addRegistro ?
+  //     setAddRegistro(false) :
+  //     setAddRegistro(true);
+  // };
 
   return (
     <div className='container-geral'>
 
-      <DashHeader />
+      <DashHeader
+        openEditUser={openEditUser}
+        setOpenEditUser={setOpenEditUser} />
 
       <div className='container-dashboard'>
 
@@ -49,7 +53,13 @@ function Dashboard() {
 
       {addRegistro ? <ModalRegistro
         addRegistro={addRegistro}
-        setAddRegistro={setAddRegistro} /> : null}
+        setAddRegistro={setAddRegistro}
+      /> : null}
+
+      {openEditUser ? <EditUser
+        openEditUser={openEditUser}
+        setOpenEditUser={setOpenEditUser}
+      /> : null}
 
     </div>
 

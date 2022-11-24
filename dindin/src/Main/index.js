@@ -1,6 +1,31 @@
+import { useState } from 'react';
 import './styles.css';
 
 function Main() {
+
+  const [myLogin, setMyLogin] = useState({
+    email: '',
+    pass: '',
+  })
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const loginEmailPass = {
+      email: myLogin.email,
+      pass: myLogin.pass
+    };
+    console.log(loginEmailPass);
+  };
+
+  const handleLoginEmail = (event) => {
+    const myemail = event.target.value;
+    setMyLogin({ ...myLogin, email: myemail });
+  };
+
+  const handleLoginPass = (event) => {
+    const mypass = event.target.value;
+    setMyLogin({ ...myLogin, pass: mypass });
+  };
 
   return (
     <div className='container-geral'>
@@ -13,11 +38,11 @@ function Main() {
           <button className='btn-sign-up'>Cadastre-se</button>
         </div>
         <div className='right-side'>
-          <form className='container-form'>
+          <form onSubmit={handleLogin} className='container-form'>
             <h1>Login</h1>
-            <input type='text' placeholder='E-mail'></input>
-            <input type='text' placeholder='Password'></input>
-            <button>Entrar</button>
+            <input onChange={handleLoginEmail} type='text' placeholder='E-mail'></input>
+            <input onChange={handleLoginPass} type='text' placeholder='Password'></input>
+            <button >Entrar</button>
           </form>
         </div>
       </div>
