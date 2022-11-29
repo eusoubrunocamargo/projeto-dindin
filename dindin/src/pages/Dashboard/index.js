@@ -1,10 +1,10 @@
 import './styles.css';
-import Filtros from '../components/Filtros';
+import Filtros from '../../components/Filtros';
 import { useState } from 'react';
-import ModalRegistro from '../components/ModalRegistro';
-import DashHeader from '../components/DashHeader';
-import Extrato from '../components/Extrato';
-import Resumo from '../components/Resumo';
+import ModalRegistro from '../../components/ModalRegistro';
+import DashHeader from '../../components/DashHeader';
+import Extrato from '../../components/Extrato';
+import Resumo from '../../components/Resumo';
 
 function Dashboard() {
 
