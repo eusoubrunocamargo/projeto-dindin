@@ -1,8 +1,10 @@
 import "./styles.css";
 import api from "../../services/api";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 function SignIn() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     nome: "",
     email: "",
@@ -26,14 +28,17 @@ function SignIn() {
         return alert("A senha deve ser igual!");
       }
 
-      const response = await api.post("/usuario", {
+      const { data } = await api.post("/usuario", {
         nome: form.nome,
         email: form.email,
         senha: form.senha,
       });
-      console.log(response);
+
+      console.log(data);
+
+      navigate("/login");
     } catch (error) {
-      console.log(error);
+      alert(error.response.data.mensagem);
     }
   };
 
@@ -73,7 +78,7 @@ function SignIn() {
           onChange={inputValue}
         ></input>
         <button>Cadastrar</button>
-        <span>Já tem cadastro? Faça login!</span>
+        <span>Já tem cadastro? <Link to="/login">Faça login!</Link></span>
       </form>
     </div>
   );
