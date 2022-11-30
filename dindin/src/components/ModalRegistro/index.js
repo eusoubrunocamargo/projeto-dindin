@@ -66,11 +66,13 @@ export default function ModalRegistro(props) {
                     <form className='form-add-registro' onSubmit={handleSubmit}>
 
                         <div className='btn-entrada-saida'>
-                            <input onChange={handleChangeTipo} type='radio' id='tipo' name='entradasaida' value='entrada' />
-                            <label htmlFor='campoentrada'>Entrada</label>
 
-                            <input onChange={handleChangeTipo} type='radio' id='tipo' name='entradasaida' value='saida' />
-                            <label htmlFor='camposaida'>Saída</label>
+                            <input onChange={handleChangeTipo} type='radio' name='escolha-entrada-saida' id='tipoentrada' value='entrada' />
+                            <label htmlFor='tipoentrada' className='style-label-entrada'>Entrada</label>
+
+                            <input onChange={handleChangeTipo} type='radio' name='escolha-entrada-saida' id='tiposaida' value='saida' />
+                            <label htmlFor='tiposaida' className='style-label-saida'>Saída</label>
+
                         </div>
 
                         <div className='container-itens-registro'>
@@ -111,7 +113,7 @@ export default function ModalRegistro(props) {
                         </div>
 
                         <div className='btn-enviar-add-registro'>
-                            <button type='submit'>Confirmar</button>
+                            <button className='style-btn-submit' type='submit'>Confirmar</button>
                         </div>
 
                     </form>

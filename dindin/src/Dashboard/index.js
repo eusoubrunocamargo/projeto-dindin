@@ -6,6 +6,7 @@ import DashHeader from '../components/DashHeader';
 import Extrato from '../components/Extrato';
 import Resumo from '../components/Resumo';
 import EditUser from '../components/EditUser';
+import Filtro from '../assets/icon-filtro.svg';
 
 function Dashboard() {
 
@@ -37,7 +38,7 @@ function Dashboard() {
       <div className='container-dashboard'>
 
         <div className='container-lado-esquerdo'>
-          <button onClick={handleFiltro} className='btn-exibir-filtro'>Filtros</button>
+          <button onClick={handleFiltro} className='btn-exibir-filtro'><img src={Filtro} alt='Filtro' /><span>Filtrar</span></button>
           {filtro ? <Filtros /> : null}
 
           <Extrato />

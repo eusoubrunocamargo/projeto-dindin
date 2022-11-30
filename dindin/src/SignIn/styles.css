@@ -76,3 +76,27 @@
 .container-form span {
     font-size: small;
 }
+
+.signup {
+    background-color: white;
+    padding: 4rem 0rem;
+    width: 30rem;
+    border: none;
+}
+
+.signup button {
+    background-color: #7978D9;
+    color: white;
+    width: 80%;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+.signup input {
+    border: solid 1px rgb(85, 85, 85, 0.5);
+}
+
+.signup span {
+    font-weight: 700;
+    color: #7978D9;
+}

@@ -31,8 +31,8 @@ function Main() {
     <div className='container-geral'>
       <div className='container-main'>
         <div className='left-side'>
-          <h1>Controle suas finanças, sem planilha chata.</h1>
-          <span>Organizar suas finanças nunca foi tão fácil com o DINDIN.
+          <h1>Controle suas <span className='purple-planilha'>finanças</span>, sem planilha chata.</h1>
+          <span className='micro-texto'>Organizar suas finanças nunca foi tão fácil com o DINDIN.
             Você tem tudo num único lugar e em um clique de distância.
           </span>
           <button className='btn-sign-up'>Cadastre-se</button>
@@ -42,11 +42,11 @@ function Main() {
             <h1>Login</h1>
             <input onChange={handleLoginEmail} type='text' placeholder='E-mail'></input>
             <input onChange={handleLoginPass} type='text' placeholder='Password'></input>
-            <button >Entrar</button>
+            <button className='btn-entrar' >Entrar</button>
           </form>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 

@@ -13,11 +13,16 @@ li {
 
 .container-dashboard {
     height: calc(100vh - 12rem);
-    /* background-color: lightblue; */
+    background-color: white;
+    border-radius: 6rem 6rem 0rem 0rem;
     padding: 5rem 5rem 0;
-    border: solid red 1px;
     display: flex;
     gap: 3rem;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 15rem;
 }
 
 .container-lado-esquerdo {
@@ -34,12 +39,20 @@ li {
 .btn-exibir-filtro {
     all: unset;
     width: 10rem;
-    border: solid 1px black;
+    background-color: #fafafa;
     text-align: center;
     margin-bottom: 2rem;
+    box-shadow: 0px 2px 11px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    height: 3rem;
+
 }
 
 .btn-exibir-filtro:hover {
-    background-color: black;
+    background-color: #7978D9;
     color: white;
 }

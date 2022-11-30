@@ -43,7 +43,7 @@ function SignIn() {
 
   return (
     <div className='container-geral'>
-      <form onSubmit={handleSubmitSignUp} className='container-form'>
+      <form onSubmit={handleSubmitSignUp} className='signup container-form'>
         <h1>Cadastre-se</h1>
         <input onChange={handleNome} type='text' placeholder='Nome'></input>
         <input onChange={handleEmail} type='text' placeholder='E-mail'></input>

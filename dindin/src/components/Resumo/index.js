@@ -10,17 +10,17 @@ export default function Resumo(props) {
 
                 <div className='resumo-entradas'>
                     <span>Entradas</span>
-                    <span>R$200,00</span>
+                    <span className='resumo-entradas-color'>R$200,00</span>
                 </div>
 
                 <div className='resumo-entradas'>
                     <span>Saídas</span>
-                    <span>R$150,00</span>
+                    <span className='resumo-saidas-color'>R$150,00</span>
                 </div>
 
                 <div className='resumo-entradas'>
                     <span>Saldo</span>
-                    <span>R$50,00</span>
+                    <span className='resumo-saldo-color'>R$50,00</span>
                 </div>
             </div>
 

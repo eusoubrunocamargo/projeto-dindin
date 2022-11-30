@@ -1,4 +1,6 @@
 import '../Extrato/styles.css'
+import Lapis from '../../assets/lapis.svg';
+import Lixeira from '../../assets/lixeira.svg';
 
 export default function Extrato() {
 
@@ -50,8 +52,8 @@ export default function Extrato() {
                                 </ul>
                             </div>
                             <div className='container-editar-item'>
-                                <button>Editar</button>
-                                <button>Deletar</button>
+                                <button><img src={Lapis} alt='Lapis' /></button>
+                                <button><img src={Lixeira} alt='Lixeira' /></button>
                             </div>
                         </div>
                     )
