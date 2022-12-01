@@ -1,4 +1,4 @@
-import '../Extrato/styles.css'
+import './styles.css'
 import Lapis from '../../assets/lapis.svg';
 import Lixeira from '../../assets/lixeira.svg';
 import { useEffect, useState } from 'react';
@@ -25,7 +25,7 @@ export default function Extrato() {
         },
     ];
 
-    const [index, setIndex] = useState();
+    const [index] = useState();
     const [deleteItem, setDeleteItem] = useState([]);
 
     useEffect(() => {

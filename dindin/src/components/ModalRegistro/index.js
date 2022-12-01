@@ -1,6 +1,5 @@
 import "../ModalRegistro/styles.css";
-import DatePicker from "react-datepicker";
-import { registerLocale, setDefaultLocale } from "react-datepicker";
+import DatePicker, { registerLocale } from "react-datepicker";
 import CurrencyInput from "react-currency-input-field";
 import ptBR from "date-fns/locale/pt-BR";
 import "react-datepicker/dist/react-datepicker.css";

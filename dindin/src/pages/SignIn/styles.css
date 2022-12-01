@@ -17,7 +17,6 @@
 .btn-sign-up {
     all: unset;
     width: 12rem;
-    border: solid 1px black;
     height: 3rem;
     text-align: center;
 }
@@ -30,11 +29,9 @@
 .container-main {
     width: 80%;
     display: flex;
-    border: solid 1px black;
 }
 
 .container-form {
-    border: solid 1px black;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,7 +48,6 @@
     width: 80%;
     height: 3rem;
     margin: 0.5rem;
-    border: solid 1px black;
     padding: 0 1rem;
 }
 
@@ -62,14 +58,12 @@
 .container-form button {
     all: unset;
     width: 12rem;
-    border: solid 1px black;
     height: 3rem;
     text-align: center;
     margin-bottom: 1rem;
 }
 
 .container-form button:hover {
-    background-color: black;
     color: white;
 }
 

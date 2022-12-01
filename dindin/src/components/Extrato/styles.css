@@ -3,14 +3,12 @@
 
 .container-extrato {
     width: 100%;
-    /* border: solid 1px red; */
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
 .container-extrato ul {
-    /* border: solid 1px black; */
     width: 100%;
     display: flex;
     align-items: center;
