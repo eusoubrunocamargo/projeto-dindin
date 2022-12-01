@@ -83,6 +83,7 @@ export default function ModalRegistro(props) {
                 name="escolha-entrada-saida"
                 id="tiposaida"
                 value="saida"
+                checked={true}
               />
               <label htmlFor="tiposaida" className="style-label-saida">
                 Saída
