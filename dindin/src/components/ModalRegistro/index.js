@@ -70,7 +70,7 @@ export default function ModalRegistro(props) {
                             <input onChange={handleChangeTipo} type='radio' name='escolha-entrada-saida' id='tipoentrada' value='entrada' />
                             <label htmlFor='tipoentrada' className='style-label-entrada'>Entrada</label>
 
-                            <input onChange={handleChangeTipo} type='radio' name='escolha-entrada-saida' id='tiposaida' value='saida' />
+                            <input onChange={handleChangeTipo} type='radio' name='escolha-entrada-saida' id='tiposaida' value='saida' checked={true} />
                             <label htmlFor='tiposaida' className='style-label-saida'>Saída</label>
 
                         </div>

@@ -25,25 +25,25 @@ export default function Extrato() {
         },
     ];
 
-    const [index, setIndex] = useState();
+    // const [index, setIndex] = useState();
     const [deleteItem, setDeleteItem] = useState([]);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if (!index) {
-            return;
-        }
-        console.log(index);
-        setDeleteItem([...deleteItem, index]);
-        console.log(deleteItem);
+    //     if (!index) {
+    //         return;
+    //     }
+    //     console.log(index);
+    //     setDeleteItem([...deleteItem, index]);
+    //     console.log(deleteItem);
 
-    }, [index]);
+    // }, [index]);
 
-    useEffect(() => {
+    // useEffect(() => {
 
 
 
-    }, [deleteItem]);
+    // }, [deleteItem]);
 
 
 
@@ -78,8 +78,12 @@ export default function Extrato() {
                                             {deleteItem.includes(item.id) ? <ModalDelete /> : null}
                                             <button><img src={Lapis} alt='Lapis' /></button>
                                             <button onClick={() => {
-                                                if (deleteItem.includes)
-                                                    setDeleteItem([...deleteItem, item.id]);
+                                                if (deleteItem.includes(item.id)) {
+                                                    const arr = deleteItem.splice(deleteItem.indexOf(item.id), 1);
+                                                    setDeleteItem([...deleteItem, arr]);
+                                                    return;
+                                                }
+                                                setDeleteItem([...deleteItem, item.id]);
 
                                             }}><img src={Lixeira} alt='Lixeira' /></button>
                                         </div>
