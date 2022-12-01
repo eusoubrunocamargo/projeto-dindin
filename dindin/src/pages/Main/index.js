@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./styles.css";
 import api from "../../services/api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { setItem, getItem } from "../../utils/storage";
 
 function Main() {
   const navigate = useNavigate();
@@ -9,6 +10,12 @@ function Main() {
     email: "",
     senha: "",
   });
+
+  useEffect(() => {
+    if (getItem("token")) {
+      navigate("/dashboard");
+    }
+  }, []);
 
   const inputValue = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
@@ -18,14 +25,17 @@ function Main() {
     event.preventDefault();
 
     try {
-      const response = await api.post("/login", {
+      const {
+        data: { id, nome, token },
+      } = await api.post("/login", {
         email: form.email,
         senha: form.senha,
       });
 
-      console.log(response);
-
-      navigate('/dashboard')
+      setItem("name", nome);
+      setItem("userId", id);
+      setItem("token", token);
+      navigate("/dashboard");
     } catch (error) {
       alert(error.response.data.mensagem);
     }
