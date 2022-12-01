@@ -1,7 +1,7 @@
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
-import SignIn from '../src/Pages/SignIn';
-import Main from '../src/Pages/Main';
-import Dashboard from '../src/Pages/Dashboard';
+import SignIn from "../src/pages/SignIn";
+import Main from "./pages/Main";
+import Dashboard from "../src/pages/Dashboard";
 import { getItem } from "./utils/storage";
 
 const ProtectedRoutes = ({ redirectTo }) => {

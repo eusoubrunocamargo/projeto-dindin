@@ -4,6 +4,8 @@ import CurrencyInput from "react-currency-input-field";
 import ptBR from "date-fns/locale/pt-BR";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
+import api from "../../services/api";
+import { getItem } from "../../utils/storage";
 
 export default function ModalRegistro(props) {
   const arrayCategorias = props.arrayCategorias;
@@ -36,16 +38,31 @@ export default function ModalRegistro(props) {
     setStringInput({ ...stringInput, valor: somenteNumeros });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    let formData = {
-      tipo: stringInput.tipo,
-      valor: stringInput.valor,
-      categoria: stringInput.categoria,
-      descricao: stringInput.descricao,
-      data: startDate.toISOString(),
-    };
-    console.log(formData);
+
+    try {
+      const { data } = await api.post(
+        "/transacao",
+        {
+          tipo: stringInput.tipo === "" ? "saida" : stringInput.tipo,
+          valor: stringInput.valor,
+          categoria_id: Number(stringInput.categoria),
+          descricao: stringInput.descricao,
+          data: startDate.toISOString(),
+        },
+        {
+          headers: {
+            authorization: `Bearer ${getItem("token")}`,
+          },
+        }
+      );
+
+      console.log(data);
+    } catch (error) {
+      alert(error.response.data.mensagem);
+    }
+
     props.setAddRegistro(false);
   };
 
@@ -112,7 +129,7 @@ export default function ModalRegistro(props) {
               <datalist id="categorias">
                 <option>Selecione uma categoria:</option>
                 {arrayCategorias.map((categoria) => (
-                  <option key={categoria.id} value={categoria.descricao}>
+                  <option key={categoria.id} value={categoria.id}>
                     {categoria.descricao}
                   </option>
                 ))}

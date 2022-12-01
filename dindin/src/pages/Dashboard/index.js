@@ -16,16 +16,12 @@ function Dashboard() {
   function handleFiltro() {
     filtro ? setFiltro(false) : setFiltro(true);
   }
-
   const [openEditUser, setOpenEditUser] = useState(false);
-
-  const token = getItem("token");
-
   const categoriasApi = async () => {
     try {
       const { data } = await api.get("/categoria", {
         headers: {
-          authorization: `Bearer ${token}`,
+          authorization: `Bearer ${getItem("token")}`,
         },
       });
 
