@@ -20,6 +20,7 @@ function SignIn() {
     event.preventDefault();
 
     try {
+
       if (!form.email || !form.nome || !form.senha || !form.senhaIdentica) {
         return alert("Todos os campos são obrigatórios!");
       }

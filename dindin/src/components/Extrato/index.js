@@ -1,8 +1,9 @@
 import './styles.css'
 import Lapis from '../../assets/lapis.svg';
 import Lixeira from '../../assets/lixeira.svg';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ModalDelete from '../ModalDeleteRegistro';
+import ModalEditarRegistro from '../ModalEditarRegistro';
 
 export default function Extrato() {
 
@@ -25,27 +26,11 @@ export default function Extrato() {
         },
     ];
 
-    // const [index] = useState();
     const [deleteItem, setDeleteItem] = useState([]);
 
-    // useEffect(() => {
+    const [editItem, setEditItem] = useState([]);
 
-    //     if (!index) {
-    //         return;
-    //     }
-    //     console.log(index);
-    //     setDeleteItem([...deleteItem, index]);
-    //     console.log(deleteItem);
-
-    // }, [index]);
-
-    // useEffect(() => {
-
-
-
-    // }, [deleteItem]);
-
-
+    const [selectedItem, setSelectedItem] = useState([]);
 
     return (
 
@@ -66,6 +51,7 @@ export default function Extrato() {
                 {registros.map((item) => {
                     return (
                         <div key={item.id} className='container-item' id='container-item'>
+                            {editItem.includes(item.id) ? <ModalEditarRegistro setEditItem={setEditItem} item={selectedItem} /> : null}
                             <div key={item.id} className='container-itens-extrato'>
                                 <ul>
                                     <li>{item.data}</li>
@@ -75,8 +61,24 @@ export default function Extrato() {
                                     <li>{item.valor}</li>
                                     <li>
                                         <div className='container-editar-item'>
+
+                                            {/* {editItem.includes(item.id) ? <ModalEditarRegistro /> : null} */}
+                                            <button onClick={() => {
+                                                if (editItem.includes(item.id)) {
+                                                    const arr = editItem.splice(editItem.indexOf(item.id), 1);
+                                                    setEditItem([...editItem, arr]);
+                                                    return;
+                                                }
+                                                setEditItem([...editItem, item.id]);
+                                                setSelectedItem([...selectedItem, item]);
+                                                //console.log(item);
+                                                console.log(selectedItem);
+                                            }
+                                            }
+                                            ><img src={Lapis} alt='Lapis' />
+                                            </button>
+
                                             {deleteItem.includes(item.id) ? <ModalDelete /> : null}
-                                            <button><img src={Lapis} alt='Lapis' /></button>
                                             <button onClick={() => {
                                                 if (deleteItem.includes(item.id)) {
                                                     const arr = deleteItem.splice(deleteItem.indexOf(item.id), 1);
@@ -85,7 +87,9 @@ export default function Extrato() {
                                                 }
                                                 setDeleteItem([...deleteItem, item.id]);
 
-                                            }}><img src={Lixeira} alt='Lixeira' /></button>
+                                            }}><img src={Lixeira} alt='Lixeira' />
+                                            </button>
+
                                         </div>
                                     </li>
                                 </ul>

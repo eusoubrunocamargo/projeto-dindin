@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
 
 export default function ModalRegistro(props) {
+
   const arrayCategorias = props.arrayCategorias;
 
   registerLocale("pt-BR", ptBR);
@@ -19,6 +20,7 @@ export default function ModalRegistro(props) {
   });
 
   const handleChangeTipo = (event) => {
+    console.log(event.target.value);
     setStringInput({ ...stringInput, tipo: event.target.value });
   };
 
@@ -38,6 +40,9 @@ export default function ModalRegistro(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (stringInput.tipo === '') {
+      stringInput.tipo = 'saida';
+    }
     let formData = {
       tipo: stringInput.tipo,
       valor: stringInput.valor,
@@ -83,7 +88,6 @@ export default function ModalRegistro(props) {
                 name="escolha-entrada-saida"
                 id="tiposaida"
                 value="saida"
-                checked={true}
               />
               <label htmlFor="tiposaida" className="style-label-saida">
                 Saída
