@@ -21,6 +21,7 @@ export default function ModalRegistro(props) {
   });
 
   const handleChangeTipo = (event) => {
+    console.log(event.target.value);
     setStringInput({ ...stringInput, tipo: event.target.value });
   };
 
@@ -40,9 +41,8 @@ export default function ModalRegistro(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
-      const { data } = await api.post(
+      await api.post(
         "/transacao",
         {
           tipo: stringInput.tipo === "" ? "saida" : stringInput.tipo,
@@ -57,13 +57,9 @@ export default function ModalRegistro(props) {
           },
         }
       );
-
-      console.log(data);
     } catch (error) {
       alert(error.response.data.mensagem);
     }
-
-    props.setAddRegistro(false);
   };
 
   return (
@@ -100,7 +96,6 @@ export default function ModalRegistro(props) {
                 name="escolha-entrada-saida"
                 id="tiposaida"
                 value="saida"
-                checked={true}
               />
               <label htmlFor="tiposaida" className="style-label-saida">
                 Saída
