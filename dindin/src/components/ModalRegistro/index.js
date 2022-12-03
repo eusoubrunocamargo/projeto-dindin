@@ -11,6 +11,7 @@ export default function ModalRegistro(props) {
   const arrayCategorias = props.arrayCategorias;
 
   registerLocale("pt-BR", ptBR);
+
   const [startDate, setStartDate] = useState(new Date());
 
   const [stringInput, setStringInput] = useState({
