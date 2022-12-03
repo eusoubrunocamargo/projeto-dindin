@@ -6,10 +6,6 @@ import CurrencyInput from "react-currency-input-field";
 
 export default function ModalEditarRegistro(props) {
 
-    registerLocale("pt-BR", ptBR);
-
-    const [startDate, setStartDate] = useState(new Date());
-
     const { data, dia, descricao, categoria, valor } = props.item[0];
 
     const [editarDados, setEditarDados] = useState({
@@ -20,17 +16,28 @@ export default function ModalEditarRegistro(props) {
         newvalor: valor
     });
 
+    registerLocale("pt-BR", ptBR);
+
+    const diaDaSemana = ['Domingo', 'Segunda', 'Terça', 'Quarta',
+        'Quinta', 'Sexta', 'Sábado'];
+
+    const [startDate, setStartDate] = useState(new Date());
+
+    function getDiaExtenso(dia) {
+        setEditarDados({ ...editarDados, newdia: diaDaSemana[dia] });
+        return diaDaSemana[dia];
+    }
+
     function handleEditarDescricao(event) {
         const newdescricao = event.target.value;
         setEditarDados({ ...editarDados, newdescricao });
-        console.log(editarDados);
     };
 
     function handleEditarData(date) {
-        const dia = date.getDay();
-        console.log(dia);
         setStartDate(date);
-        setEditarDados({ ...editarDados, newdate: date.toISOString() })
+        const dia = date.getDay();
+        const diaExtenso = getDiaExtenso(dia);
+        setEditarDados({ ...editarDados, newdate: date, newdia: diaExtenso });
     };
 
     const handleChangeValor = (event) => {
@@ -62,7 +69,7 @@ export default function ModalEditarRegistro(props) {
                                 withPortal
                                 dateFormat="P"
                             /></li>
-                            <li>{dia}</li>
+                            <li>{editarDados.newdia}</li>
                             <li><input type='text' defaultValue={editarDados.newdescricao} onChange={handleEditarDescricao} /></li>
                             <li>{categoria}</li>
                             <li><CurrencyInput
