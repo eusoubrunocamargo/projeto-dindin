@@ -58,6 +58,7 @@ export default function ModalEditarRegistro(props) {
 
                 <div className='container-editar-item-registro'>
 
+
                     <form onSubmit={handleSubmit} className='container-form-editar-registro'>
                         <ul>
                             <li><DatePicker
