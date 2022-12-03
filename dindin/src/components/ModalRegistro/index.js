@@ -3,12 +3,12 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import CurrencyInput from "react-currency-input-field";
 import ptBR from "date-fns/locale/pt-BR";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import api from "../../services/api";
 import { getItem } from "../../utils/storage";
 
 export default function ModalRegistro(props) {
-  const arrayCategorias = props.arrayCategorias;
+  const [arrayCategorias, setArrayCategorias] = useState([]);
 
   registerLocale("pt-BR", ptBR);
 
@@ -42,13 +42,16 @@ export default function ModalRegistro(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const { id } = arrayCategorias.find(
+      (element) => stringInput.categoria === element.descricao
+    );
     try {
-      await api.post(
+      const { data } = await api.post(
         "/transacao",
         {
           tipo: stringInput.tipo === "" ? "saida" : stringInput.tipo,
           valor: stringInput.valor,
-          categoria_id: Number(stringInput.categoria),
+          categoria_id: id,
           descricao: stringInput.descricao,
           data: startDate.toISOString(),
         },
@@ -58,10 +61,31 @@ export default function ModalRegistro(props) {
           },
         }
       );
+
+      console.log(data);
     } catch (error) {
       alert(error.response.data.mensagem);
     }
+
+    props.setAddRegistro(false);
   };
+
+  const categoriasApi = async () => {
+    try {
+      const { data } = await api.get("/categoria", {
+        headers: {
+          authorization: `Bearer ${getItem("token")}`,
+        },
+      });
+      setArrayCategorias(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    categoriasApi();
+  }, []);
 
   return (
     <>
@@ -125,9 +149,10 @@ export default function ModalRegistro(props) {
               <datalist id="categorias">
                 <option>Selecione uma categoria:</option>
                 {arrayCategorias.map((categoria) => (
-                  <option key={categoria.id} value={categoria.id}>
-                    {categoria.descricao}
-                  </option>
+                  <option
+                    key={categoria.id}
+                    value={categoria.descricao}
+                  ></option>
                 ))}
               </datalist>
             </div>
