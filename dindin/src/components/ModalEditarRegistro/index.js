@@ -27,6 +27,8 @@ export default function ModalEditarRegistro(props) {
     };
 
     function handleEditarData(date) {
+        const dia = date.getDay();
+        console.log(dia);
         setStartDate(date);
         setEditarDados({ ...editarDados, newdate: date.toISOString() })
     };
