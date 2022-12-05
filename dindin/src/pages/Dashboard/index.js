@@ -1,12 +1,14 @@
 import "./styles.css";
 import Filtros from "../../components/Filtros";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ModalRegistro from "../../components/ModalRegistro";
 import DashHeader from "../../components/DashHeader";
 import Extrato from "../../components/Extrato";
 import Resumo from "../../components/Resumo";
 import EditUser from "../../components/EditUser";
 import Filtro from "../../assets/icon-filtro.svg";
+import { getItem } from "../../utils/storage";
+import api from "../../services/api";
 
 function Dashboard() {
   const [filtro, setFiltro] = useState(false);
@@ -15,6 +17,24 @@ function Dashboard() {
   }
   const [openEditUser, setOpenEditUser] = useState(false);
   const [addRegistro, setAddRegistro] = useState(false);
+  const [registros, setRegistros] = useState([]);
+
+  const transacoesUsuario = async () => {
+    try {
+      const { data } = await api.get("/transacao", {
+        headers: {
+          authorization: `Bearer ${getItem("token")}`,
+        },
+      });
+      setRegistros([...data]);
+    } catch (error) {
+      alert(error.response.data.mensagem);
+    }
+  };
+
+  useEffect(() => {
+    transacoesUsuario();
+  }, []);
 
   return (
     <div className="container-geral">
@@ -31,7 +51,7 @@ function Dashboard() {
           </button>
           {filtro ? <Filtros /> : null}
 
-          <Extrato />
+          <Extrato registros={registros} setRegistros={setRegistros} />
         </div>
 
         <div className="container-lado-direito">
@@ -43,6 +63,8 @@ function Dashboard() {
         <ModalRegistro
           addRegistro={addRegistro}
           setAddRegistro={setAddRegistro}
+          registros={registros}
+          setRegistros={setRegistros}
         />
       ) : null}
 

@@ -1,3 +1,5 @@
+
+
 export const setItem = (key, value) => {
    localStorage.setItem(key, value);
 };
@@ -13,3 +15,4 @@ export const removeItem = (key) => {
 export const clearItem = () => {
   localStorage.clear();
 };
+

@@ -9,6 +9,7 @@ import { getItem } from "../../utils/storage";
 
 export default function ModalRegistro(props) {
   const [arrayCategorias, setArrayCategorias] = useState([]);
+  const { registros, setRegistros } = props;
 
   registerLocale("pt-BR", ptBR);
 
@@ -22,7 +23,6 @@ export default function ModalRegistro(props) {
   });
 
   const handleChangeTipo = (event) => {
-    console.log(event.target.value);
     setStringInput({ ...stringInput, tipo: event.target.value });
   };
 
@@ -36,15 +36,33 @@ export default function ModalRegistro(props) {
 
   const handleChangeValor = (event) => {
     let valorBruto = event.target.value;
-    const somenteNumeros = Number(valorBruto.replace(/\D/g, ""));
+    const somenteNumeros = Number(valorBruto.replace(/\D/g, "")).toFixed(2).replace(".", "");
     setStringInput({ ...stringInput, valor: somenteNumeros });
   };
+
+  const categoriasApi = async () => {
+    try {
+      const { data } = await api.get("/categoria", {
+        headers: {
+          authorization: `Bearer ${getItem("token")}`,
+        },
+      });
+
+      setArrayCategorias(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const { id } = arrayCategorias.find(
       (element) => stringInput.categoria === element.descricao
     );
+
+    console.log(stringInput.valor);
+    
     try {
       const { data } = await api.post(
         "/transacao",
@@ -61,26 +79,12 @@ export default function ModalRegistro(props) {
           },
         }
       );
-
-      console.log(data);
+      setRegistros([...registros, data]);
     } catch (error) {
       alert(error.response.data.mensagem);
     }
 
     props.setAddRegistro(false);
-  };
-
-  const categoriasApi = async () => {
-    try {
-      const { data } = await api.get("/categoria", {
-        headers: {
-          authorization: `Bearer ${getItem("token")}`,
-        },
-      });
-      setArrayCategorias(data);
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   useEffect(() => {
