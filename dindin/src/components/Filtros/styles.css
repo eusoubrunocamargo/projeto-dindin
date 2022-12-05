@@ -1,19 +1,23 @@
 .container-filtros {
-    height: 15rem;
+    min-height: 10rem;
     padding: 1rem;
+    margin-bottom: 2rem;
     display: flex;
-    flex-direction: column;
     gap: 1rem;
-    flex-wrap: wrap;
+    flex-flow: wrap;
     margin-bottom: 2rem;
     background-color: #FAFAFA;
     border-radius: 1rem;
     box-shadow: 0px 2px 11px rgba(0, 0, 0, 0.1);
 }
 
+.container-filtros button {
+    cursor: pointer;
+}
+
 .cada-filtro {
     border-radius: 5rem;
-    width: 9rem;
+    min-width: 10rem;
     height: 3rem;
     text-align: center;
     font-size: 1rem;
@@ -23,12 +27,12 @@
 }
 
 .btn-filtros {
-    background-color: black;
+    background-color: #7978D9;
     color: white;
 }
 
 .btn-filtros:hover {
-    background-color: red;
+    opacity: 0.9;
 }
 
 .btn-cada-filtro:hover {

@@ -33,11 +33,13 @@
     margin-top: 0.5rem;
     padding: 0rem 0.5rem;
     border-radius: 0.5rem;
+    cursor: pointer !important;
 }
 
 .container-itens-registro {
     height: 6rem;
 }
+
 
 .container-itens-registro button {
     all: unset;
@@ -56,6 +58,10 @@
     align-items: center;
 }
 
+.titulo-btn-fechar button {
+    cursor: pointer;
+}
+
 .btn-enviar-add-registro {
     margin-top: 5rem;
     width: 100%;
@@ -72,6 +78,7 @@
     justify-content: center;
     background-color: #7978D9 !important;
     border-radius: 0.5rem !important;
+    cursor: pointer !important;
 }
 
 .btn-enviar-add-registro:hover {
@@ -82,6 +89,7 @@
     opacity: 0;
     position: fixed;
     width: 100%;
+    cursor: pointer;
 
 }
 

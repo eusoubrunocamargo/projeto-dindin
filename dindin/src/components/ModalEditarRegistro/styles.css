@@ -40,6 +40,12 @@
     padding: 0.25rem
 }
 
+.btn-confirmar-editar-registro:hover,
+.btn-cancelar-editar-registo:hover {
+    background-color: white;
+    color: rgb(121, 120, 217);
+}
+
 .btn-cancelar-editar-registo {
     font-size: smaller;
     cursor: pointer;
@@ -53,6 +59,3 @@
 .container-form-editar-registro ul {
     display: flex;
 }
-
-/* .container-form-editar-registro li {
-} */

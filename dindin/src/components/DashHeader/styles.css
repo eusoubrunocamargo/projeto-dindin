@@ -6,6 +6,7 @@
     position: fixed;
     top: 0;
     background: linear-gradient(90.23deg, #05EDE3 0.02%, #645FFB 99.63%);
+    padding: 5rem;
 }
 
 .container-logo {
@@ -53,4 +54,9 @@
     font-weight: 700;
     color: white;
     font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.btn-logout {
+    cursor: pointer;
 }
