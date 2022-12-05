@@ -1,5 +1,7 @@
 import "../EditUser/styles.css";
 import { useState } from "react";
+import { getItem, setItem } from "../../utils/storage";
+import api from "../../services/api";
 
 export default function EditUser(props) {
   const [stringInput, setStringInput] = useState({
@@ -25,15 +27,31 @@ export default function EditUser(props) {
     setStringInput({ ...stringInput, confirmarsenha: event.target.value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    let formData = {
-      nome: stringInput.nome,
-      email: stringInput.email,
-      senha: stringInput.senha,
-      confirmarsenha: stringInput.confirmarsenha,
-    };
-    console.log(formData);
+
+    try {
+      if (stringInput.senha !== stringInput.confirmarsenha) {
+        return alert("A senha deve ser igual!");
+      }
+
+      await api.put(
+        "/usuario",
+        {
+          nome: stringInput.nome,
+          email: stringInput.email,
+          senha: stringInput.senha,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${getItem("token")}`,
+          },
+        }
+      );
+    } catch (error) {
+      alert(error.response.data.mensagem);
+    }
+
     props.setOpenEditUser(false);
   };
 
@@ -56,7 +74,12 @@ export default function EditUser(props) {
             <div className="container-itens-registro">
               <label htmlFor="editar-nome">Nome</label>
               <br />
-              <input onChange={handleChangeNome} type="text" id="editar-nome" />
+              <input
+                onChange={handleChangeNome}
+                type="text"
+                id="editar-nome"
+                required
+              />
               <br />
             </div>
 
@@ -65,8 +88,9 @@ export default function EditUser(props) {
               <br />
               <input
                 onChange={handleChangeEmail}
-                type="text"
+                type="email"
                 id="editar-email"
+                required
               />
               <br />
             </div>
@@ -76,8 +100,9 @@ export default function EditUser(props) {
               <br />
               <input
                 onChange={handleChangeSenha}
-                type="text"
+                type="password"
                 id="editar-senha"
+                required
               />
               <br />
             </div>
@@ -87,8 +112,9 @@ export default function EditUser(props) {
               <br />
               <input
                 onChange={handleChangeConfirmarSenha}
-                type="text"
+                type="password"
                 id="editar-confirmar-senha"
+                required
               />
               <br />
             </div>

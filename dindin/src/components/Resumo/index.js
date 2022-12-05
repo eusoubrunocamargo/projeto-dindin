@@ -22,7 +22,7 @@ export default function Resumo(props) {
 
   useEffect(() => {
     extratoApi();
-  });
+  },[]);
   return (
     <>
       <div className="container-resumo">
