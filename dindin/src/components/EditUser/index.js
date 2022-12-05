@@ -48,6 +48,8 @@ export default function EditUser(props) {
           },
         }
       );
+
+      setItem("name", stringInput.nome);
     } catch (error) {
       alert(error.response.data.mensagem);
     }
